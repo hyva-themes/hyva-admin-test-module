@@ -9,7 +9,7 @@ class TestGridDataProvider implements HyvaGridArrayProviderInterface
     public function getHyvaGridData(): array
     {
         return [
-            ['name' => 'Lois', 'age' => 51, 'weight' => 5.32, 'family' => 'royals'],
+            ['name' => 'Louis', 'age' => 51, 'weight' => 5.32, 'family' => 'royals'],
             ['name' => 'Wilma', 'age' => 42, 'weight' => 2.1, 'family' => 'royals'],
             ['name' => 'Niza', 'age' => 18, 'weight' => 1.87, 'family' => 'royals'],
             ['name' => 'Bob', 'age' => 30, 'weight' => 2.6, 'family' => 'fub'],
