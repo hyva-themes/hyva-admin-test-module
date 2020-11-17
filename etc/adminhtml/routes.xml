@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:App/etc/routes.xsd">
+    <router id="admin">
+        <route id="hyva_admin_test" frontName="hyva_admin_test">
+            <module name="Hyva_AdminTest"/>
+        </route>
+    </router>
+</config>

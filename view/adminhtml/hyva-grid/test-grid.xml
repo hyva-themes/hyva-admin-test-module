@@ -1,0 +1,11 @@
+<grid>
+    <source>
+        <arrayProvider>Hyva\AdminTest\Model\TestGridDataProvider</arrayProvider>
+    </source>
+    <entityConfig>
+        <label>
+            <singular>Fossa</singular>
+            <plural>Fossazas</plural>
+        </label>
+    </entityConfig>
+</grid>
