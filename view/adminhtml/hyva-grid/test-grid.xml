@@ -2,6 +2,18 @@
     <source>
         <arrayProvider>Hyva\AdminTest\Model\TestGridDataProvider</arrayProvider>
     </source>
+    <actions idColumn="name">
+        <action id="edit" label="Edit" url="*/*/edit" idParam="id"/>
+        <action id="delete" label="Delete" url="*/*/delete"/>
+        <action id="index" label="Reindex" url="admin/dashboard"/>
+    </actions>
+    <columns rowAction="edit">
+        <include>
+        </include>
+        <exclude>
+            <column name="weight"/>
+        </exclude>
+    </columns>
     <entityConfig>
         <label>
             <singular>Fossa</singular>
