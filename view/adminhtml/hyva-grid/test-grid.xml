@@ -1,6 +1,6 @@
 <grid>
     <source>
-        <arrayProvider>Hyva\AdminTest\Model\TestGridDataProvider</arrayProvider>
+        <arrayProvider>Hyva\AdminTest\Model\ScalarGridDataProvider</arrayProvider>
     </source>
     <massActions idColumn="name" idsParam="ids">
         <action label="Update" url="*/massActions/update"/>
