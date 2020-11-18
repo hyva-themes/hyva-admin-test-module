@@ -2,6 +2,10 @@
     <source>
         <arrayProvider>Hyva\AdminTest\Model\TestGridDataProvider</arrayProvider>
     </source>
+    <massActions idColumn="name" idsParam="ids">
+        <action label="Update" url="*/massActions/update"/>
+        <action label="Delete All" url="*/massActions/delete" requireConfirmation="true"/>
+    </massActions>
     <actions idColumn="name">
         <action id="edit" label="Edit" url="*/*/edit" idParam="id"/>
         <action id="delete" label="Delete" url="*/*/delete"/>
