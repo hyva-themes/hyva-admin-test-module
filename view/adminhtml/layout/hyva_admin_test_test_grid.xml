@@ -9,6 +9,6 @@
                 </arguments>
             </block>
         </referenceContainer>
-        <block name="block-name-layout-in-xml" template="Hyva_AdminTest::name-col.phtml"/>
+        <block name="block-name-in-layout-xml" template="Hyva_AdminTest::name-col.phtml"/>
     </body>
 </page>

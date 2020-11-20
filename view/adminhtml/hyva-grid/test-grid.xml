@@ -14,7 +14,7 @@
     </actions>
     <columns rowAction="edit">
         <include keepAllSourceColumns="true">
-            <column name="name" rendererBlockName="block-name-layout-in-xml"/>
+            <column name="name" rendererBlockName="block-name-in-layout-xml"/>
             <column name="family" template="Hyva_AdminTest::family-col.phtml"/>
         </include>
         <exclude>
