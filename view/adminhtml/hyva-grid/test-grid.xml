@@ -1,19 +1,21 @@
 <grid>
     <source>
-<!--        <arrayProvider>Hyva\AdminTest\Model\ScalarGridDataProvider</arrayProvider>-->
-        <arrayProvider>Hyva\AdminTest\Model\CustomerGridDataProvider</arrayProvider>
+<!--        <arrayProvider>Hyva\AdminTest\Model\CustomerGridDataProvider</arrayProvider>-->
+        <arrayProvider>Hyva\AdminTest\Model\ScalarGridDataProvider</arrayProvider>
     </source>
-    <massActions idColumn="id" idsParam="ids">
+    <massActions idColumn="name" idsParam="ids">
         <action label="Update" url="*/massActions/update"/>
         <action label="Delete All" url="*/massActions/delete" requireConfirmation="true"/>
     </massActions>
-    <actions idColumn="id">
+    <actions idColumn="name">
         <action id="edit" label="Edit" url="*/*/edit" idParam="id"/>
         <action id="delete" label="Delete" url="*/*/delete"/>
         <action id="index" label="Reindex" url="admin/dashboard"/>
     </actions>
     <columns rowAction="edit">
-        <include>
+        <include keepAllSourceColumns="true">
+            <column name="name" rendererBlockName="block-name-layout-in-xml"/>
+            <column name="family" template="Hyva_AdminTest::family-col.phtml"/>
         </include>
         <exclude>
             <column name="weight"/>
