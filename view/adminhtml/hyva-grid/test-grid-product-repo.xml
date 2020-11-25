@@ -1,0 +1,35 @@
+<grid>
+    <source>
+        <repositoryListMethod>\Magento\Catalog\Api\ProductRepositoryInterface::getList</repositoryListMethod>
+    </source>
+    <massActions idColumn="id" idsParam="ids">
+        <action label="Update" url="*/massActions/update"/>
+        <action label="Delete All" url="*/massActions/delete" requireConfirmation="true"/>
+    </massActions>
+    <actions idColumn="id">
+        <action id="edit" label="Edit" url="*/*/edit" idParam="id"/>
+        <action id="delete" label="Delete" url="*/*/delete"/>
+        <action id="index" label="Reindex" url="admin/dashboard"/>
+    </actions>
+    <columns>
+        <include keepAllSourceColumns="true">
+            <column name="media_gallery" renderAsUnsecureHtml="true"/>
+            <column name="media_gallery_entries" renderAsUnsecureHtml="true"/>
+        </include>
+<!--        <exclude>-->
+<!--            <column name="weight"/>-->
+<!--        </exclude>-->
+    </columns>
+    <entityConfig>
+        <label>
+            <singular>Product</singular>
+            <plural>Products</plural>
+        </label>
+    </entityConfig>
+    <navigation>
+        <pager>
+            <defaultPageSize>2</defaultPageSize>
+            <pageSizes>2, 10,20,50,100</pageSizes>
+        </pager>
+    </navigation>
+</grid>

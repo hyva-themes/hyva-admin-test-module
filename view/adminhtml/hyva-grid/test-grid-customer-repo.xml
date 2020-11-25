@@ -1,0 +1,21 @@
+<grid>
+    <source>
+        <repositoryListMethod>\Magento\Customer\Api\CustomerRepositoryInterface::getList</repositoryListMethod>
+    </source>
+    <massActions idColumn="id" idsParam="ids">
+        <action label="Update" url="*/massActions/update"/>
+        <action label="Delete All" url="*/massActions/delete" requireConfirmation="true"/>
+    </massActions>
+    <actions idColumn="id">
+        <action id="edit" label="Edit" url="*/*/edit" idParam="id"/>
+        <action id="delete" label="Delete" url="*/*/delete"/>
+        <action id="index" label="Reindex" url="admin/dashboard"/>
+    </actions>
+    <columns>
+        <include>
+        </include>
+<!--        <exclude>-->
+<!--            <column name="weight"/>-->
+<!--        </exclude>-->
+    </columns>
+</grid>

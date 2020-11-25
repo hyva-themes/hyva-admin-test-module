@@ -5,7 +5,7 @@
         <referenceContainer name="content">
             <block class="Hyva\Admin\Block\Adminhtml\HyvaGrid" name="grid.test">
                 <arguments>
-                    <argument name="grid_name" xsi:type="string">test-grid</argument>
+                    <argument name="grid_name" xsi:type="string">test-grid-product-repo</argument>
                 </arguments>
             </block>
         </referenceContainer>
