@@ -13,12 +13,14 @@
     </actions>
     <columns>
         <include keepAllSourceColumns="true">
+            <column name="id"/>
+            <column name="sku"/>
             <column name="media_gallery" renderAsUnsecureHtml="true"/>
             <column name="media_gallery_entries" renderAsUnsecureHtml="true"/>
         </include>
-<!--        <exclude>-->
-<!--            <column name="weight"/>-->
-<!--        </exclude>-->
+        <exclude>
+<!--            <column name="sku"/>-->
+        </exclude>
     </columns>
     <entityConfig>
         <label>
