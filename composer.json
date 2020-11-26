@@ -1,0 +1,24 @@
+
+{
+    "name": "hyva/module-magento2-admin-test",
+    "description": "A testing module for hyva/module-magento2-admin",
+    "require": {
+        "php": "^7.4.0",
+        "ext-dom": "*",
+        "magento/framework": ">=101.0.0",
+        "magento/module-backend": ">=101.0.0",
+        "hyva/module-magento2-admin": "*"
+    },
+    "type": "magento2-module",
+    "license": [
+        "BSD-3-Clause"
+    ],
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Hyva\\Admin\\": ""
+        }
+    }
+}
