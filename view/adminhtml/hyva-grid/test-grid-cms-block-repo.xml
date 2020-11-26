@@ -1,10 +1,12 @@
-<grid>
+<?xml version="1.0"?>
+<grid xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:hyva:admin:etc/hyva-grid.xsd">
     <source>
         <repositoryListMethod>\Magento\Cms\Api\BlockRepositoryInterface::getList</repositoryListMethod>
     </source>
     <massActions idColumn="id" idsParam="ids">
-        <action label="Update" url="*/massActions/update"/>
-        <action label="Delete All" url="*/massActions/delete" requireConfirmation="true"/>
+        <action id="update" label="Update" url="*/massActions/update"/>
+        <action id="delete" label="Delete All" url="*/massActions/delete" requireConfirmation="true"/>
     </massActions>
     <actions idColumn="id">
         <action id="edit" label="Edit" url="*/*/edit" idParam="id"/>
