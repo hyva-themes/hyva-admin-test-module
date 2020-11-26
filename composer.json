@@ -1,4 +1,3 @@
-
 {
     "name": "hyva/module-magento2-admin-test",
     "description": "A testing module for hyva/module-magento2-admin",
@@ -18,7 +17,7 @@
             "registration.php"
         ],
         "psr-4": {
-            "Hyva\\Admin\\": ""
+            "Hyva\\AdminTest\\": ""
         }
     }
 }
