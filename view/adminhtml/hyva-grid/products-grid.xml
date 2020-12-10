@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+<grid xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:module:Hyva_Admin:etc/hyva-grid.xsd">
+    <source>
+        <repositoryListMethod>\Magento\Catalog\Api\ProductRepositoryInterface::getList</repositoryListMethod>
+    </source>
+    <columns rowAction="test">
+        <include>
+            <column name="id" sortOrder="10"/>
+            <column name="sku" sortOrder="20"/>
+            <column name="activity"/>
+            <column name="name"/>
+            <column name="image" type="magento_product_image" renderAsUnsecureHtml="true" label="Main Image"
+                    template="Hyva_AdminTest::image.phtml"/>
+            <column name="media_gallery" renderAsUnsecureHtml="true"/>
+            <column name="price" type="price"/>
+        </include>
+        <exclude>
+            <column name="category_gear"/>
+        </exclude>
+    </columns>
+    <actions idColumn="sku">
+        <action id="edit" label="Edit" url="*/*/edit" idParam="identifier"/>
+        <action id="delete" label="Delete" url="*/*/delete"/>
+        <action id="test" label="Test" url="*/*/dumpqueryvars"/>
+    </actions>
+    <massActions idColumn="id" idsParam="ids">
+        <action id="test" label="Test Query Params" url="*/*/dumpqueryvars"/>
+        <action id="reindex" label="Reindex" url="*/massAction/reindex"/>
+        <action id="delete" label="Delete" url="*/massAction/delete" requireConfirmation="true"/>
+    </massActions>
+    <entityConfig>
+        <label>
+            <singular>Product</singular>
+            <plural>Products</plural>
+        </label>
+    </entityConfig>
+    <navigation>
+        <pager>
+            <defaultPageSize>5</defaultPageSize>
+            <pageSizes>2, 5, 10</pageSizes>
+        </pager>
+        <sorting>
+            <defaultSortByColumn>foo</defaultSortByColumn>
+            <defaultSortDirection>desc</defaultSortDirection>
+        </sorting>
+        <filters>
+            <filter column="sku"/>
+            <filter column="activity"/>
+            <filter column="category_ids"/>
+            <filter column="id"/>
+            <filter column="color">
+                <option label="reddish">
+                    <value>16</value>
+                    <value>17</value>
+                    <value>18</value>
+                </option>
+                <option label="blueish">
+                    <value>12</value>
+                </option>
+                <option label="rose">
+                    <value>100</value>
+                </option>
+            </filter>
+        </filters>
+    </navigation>
+</grid>

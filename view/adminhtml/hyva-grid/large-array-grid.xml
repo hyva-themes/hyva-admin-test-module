@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<grid xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:module:Hyva_Admin:etc/hyva-grid.xsd">
+    <source>
+        <arrayProvider>\Hyva\AdminTest\Model\LargeArrayProvider</arrayProvider>
+    </source>
+    <navigation>
+        <filters>
+            <filter column="first"/>
+            <filter column="second"/>
+            <filter column="third"/>
+        </filters>
+    </navigation>
+</grid>
