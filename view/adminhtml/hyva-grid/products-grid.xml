@@ -8,12 +8,13 @@
         <include>
             <column name="id" sortOrder="10"/>
             <column name="sku" sortOrder="20"/>
-            <column name="activity"/>
             <column name="name"/>
             <column name="image" type="magento_product_image" renderAsUnsecureHtml="true" label="Main Image"
                     template="Hyva_AdminTest::image.phtml"/>
-            <column name="media_gallery" renderAsUnsecureHtml="true"/>
+            <column name="activity"/>
             <column name="price" type="price"/>
+
+            <column name="media_gallery" renderAsUnsecureHtml="true"/>
         </include>
         <exclude>
             <column name="category_gear"/>
