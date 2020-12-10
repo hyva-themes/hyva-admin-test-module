@@ -8,14 +8,22 @@ use Magento\Customer\Api\Data\CustomerInterface;
 use Magento\Framework\Api\SearchCriteriaBuilder;
 use Magento\Framework\Reflection\DataObjectProcessor;
 
-use function array_map as map;
-
-class CustomerGridDataProvider implements HyvaGridArrayProviderInterface
+class CustomerArrayProvider implements HyvaGridArrayProviderInterface
 {
+
+    /**
+     * @var CustomerRepositoryInterface
+     */
     private CustomerRepositoryInterface $customerRepository;
 
+    /**
+     * @var SearchCriteriaBuilder
+     */
     private SearchCriteriaBuilder $searchCriteriaBuilder;
 
+    /**
+     * @var DataObjectProcessor
+     */
     private DataObjectProcessor $dataObjectProcessor;
 
     public function __construct(
@@ -30,8 +38,9 @@ class CustomerGridDataProvider implements HyvaGridArrayProviderInterface
 
     public function getHyvaGridData(): array
     {
-        return map(function (CustomerInterface $customer): array {
+        $customers = $this->customerRepository->getList($this->searchCriteriaBuilder->create())->getItems();
+        return array_map(function (CustomerInterface $customer): array {
             return $this->dataObjectProcessor->buildOutputDataArray($customer, CustomerInterface::class);
-        }, $this->customerRepository->getList($this->searchCriteriaBuilder->create())->getItems());
+        }, $customers);
     }
 }

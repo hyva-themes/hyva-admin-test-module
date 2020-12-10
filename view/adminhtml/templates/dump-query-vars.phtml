@@ -1,0 +1,11 @@
+<?php declare(strict_types=1);
+
+/*
+ * This is a simple query argument dump template used to test passing record IDs from actions and mass actions.
+ */
+
+/** @var \Magento\Framework\View\Element\Template $block */
+/** @var \Magento\Framework\Escaper $escaper */
+
+?>
+<pre><?= $escaper->escapeHtml(json_encode($block->getRequest()->getParams() ?? [], JSON_PRETTY_PRINT)); ?></pre>

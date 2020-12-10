@@ -1,14 +1,16 @@
 <?xml version="1.0"?>
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
-    <update handle="hyva_admin_grid"/>
     <body>
         <referenceContainer name="content">
-            <block class="Hyva\Admin\Block\Adminhtml\HyvaGrid" name="demo-grid">
+            <block name="explanation" class="Magento\Framework\View\Element\Text">
                 <arguments>
-                    <argument name="grid_name" xsi:type="string">products-grid</argument>
+                    <argument name="text" xsi:type="string">
+                        <![CDATA[This is a test page to dump the request query variables.]]>
+                    </argument>
                 </arguments>
             </block>
+            <block template="Hyva_AdminTest::dump-query-vars.phtml" name="dump-query-vars"/>
         </referenceContainer>
     </body>
 </page>
