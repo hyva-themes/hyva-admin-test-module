@@ -47,7 +47,7 @@
         </sorting>
         <filters>
             <filter column="sku"/>
-            <filter column="activity"/>
+            <!--<filter column="activity"/>--> <!-- because it breaks the test page if sample data is not installed -->
             <filter column="category_ids"/>
             <filter column="id"/>
             <filter column="color">

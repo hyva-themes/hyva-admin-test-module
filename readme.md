@@ -2,6 +2,12 @@
 
 A small module to visually test Hyva_Admin.
 
+A link to the test page can be found in the admin menu in  
+*System > Tools > Hyvä Test*.
+
+This module expects the Sample Data to be installed.
+
+
 ## Stability
 
 The module is NOT considered production code. Anything can change at any time. It exists only to test and demonstrate Hyva_Admin features.  
