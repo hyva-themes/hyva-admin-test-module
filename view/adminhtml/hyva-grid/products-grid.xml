@@ -13,7 +13,6 @@
                     template="Hyva_AdminTest::image.phtml"/>
             <column name="activity"/>
             <column name="price" type="price"/>
-
             <column name="media_gallery" renderAsUnsecureHtml="true"/>
         </include>
         <exclude>
