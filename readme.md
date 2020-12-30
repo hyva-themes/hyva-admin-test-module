@@ -1,12 +1,11 @@
 # Hyva_AdminTest
 
-A small module to visually test Hyva_Admin.
+A small module to visually test [Hyva_Admin](https://github.com/hyva-themes/magento2-hyva-admin).
 
 A link to the test page can be found in the admin menu in  
 *System > Tools > Hyvä Test*.
 
 This module expects the Sample Data to be installed.
-
 
 ## Stability
 
