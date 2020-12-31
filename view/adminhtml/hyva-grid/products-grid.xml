@@ -11,7 +11,7 @@
             <column name="name"/>
             <column name="image" type="magento_product_image" renderAsUnsecureHtml="true" label="Main Image"
                     template="Hyva_AdminTest::image.phtml"/>
-            <column name="activity"/>
+            <!--column name="activity"/--> <!-- because it breaks the test page if sample data is not installed -->
             <column name="price" type="price"/>
             <column name="media_gallery" renderAsUnsecureHtml="true"/>
         </include>
