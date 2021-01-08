@@ -19,8 +19,8 @@
             <column name="category_gear"/>
         </exclude>
     </columns>
-    <actions idColumn="sku">
-        <action id="edit" label="Edit" url="*/*/edit" idParam="identifier"/>
+    <actions idColumn="id">
+        <action id="edit" label="Edit" url="*/*/edit"/>
         <action id="delete" label="Delete" url="*/*/delete"/>
         <action id="test" label="Test" url="*/*/dumpqueryvars"/>
     </actions>
