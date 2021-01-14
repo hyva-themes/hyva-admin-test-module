@@ -40,6 +40,10 @@
             <defaultPageSize>5</defaultPageSize>
             <pageSizes>2, 5, 10</pageSizes>
         </pager>
+        <buttons>
+            <button id="add" label="Add" url="*/*/add"/>
+            <button id="refresh" label="Refresh Page" onclick="window.location.reload(true)" sortOrder="-1"/>
+        </buttons>
         <sorting>
             <defaultSortByColumn>foo</defaultSortByColumn>
             <defaultSortDirection>desc</defaultSortDirection>
