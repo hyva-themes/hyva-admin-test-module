@@ -8,7 +8,7 @@
         <include>
             <column name="id" sortOrder="10"/>
             <column name="sku" sortOrder="20"/>
-            <column name="name"/>
+            <column name="name" initiallyHidden="true"/>
             <column name="image" type="magento_product_image" renderAsUnsecureHtml="true" label="Main Image"
                     template="Hyva_AdminTest::image.phtml"/>
             <column name="activity"/>

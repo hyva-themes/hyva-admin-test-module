@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <htmlContent name="orders_again">
+        <block acl="Magento_Sales::actions_view" class="Magento\Ui\Component\Layout\Tabs\TabWrapper" name="orders_again">
+            <arguments>
+                <argument name="tab_label" xsi:type="string">Orders... reloaded</argument>
+            </arguments>
+            <block name="hyva_orders_grid" class="Hyva\Admin\Block\Adminhtml\HyvaGrid">
+                <arguments>
+                    <argument name="grid_name" xsi:type="string">customer-orders</argument>
+                </arguments>
+            </block>
+        </block>
+    </htmlContent>
+</form>

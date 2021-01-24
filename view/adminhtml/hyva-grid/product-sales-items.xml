@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<grid xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:module:Hyva_Admin:etc/hyva-grid.xsd">
+    <source>
+        <repositoryListMethod>\Magento\Sales\Api\OrderItemRepositoryInterface::getList</repositoryListMethod>
+        <defaultSearchCriteriaBindings>
+            <field name="product_id" requestParam="id"/>
+        </defaultSearchCriteriaBindings>
+    </source>
+    <columns>
+        <include>
+            <column name="item_id"/>
+            <column name="order_id"/>
+            <column name="qty_invoiced"/>
+            <column name="qty_shipped"/>
+            <column name="updated_at"/>
+        </include>
+    </columns>
+</grid>

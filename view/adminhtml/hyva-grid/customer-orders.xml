@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<grid xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:module:Hyva_Admin:etc/hyva-grid.xsd">
+    <source>
+        <collection>Magento\Sales\Model\ResourceModel\Order\Grid\Collection</collection>
+        <!--<repositoryListMethod>\Magento\Sales\Api\OrderRepositoryInterface::getList</repositoryListMethod>-->
+        <defaultSearchCriteriaBindings>
+            <field name="customer_id" requestParam="id"/>
+            <!--<field name="customer_id" method="Magento\Framework\App\RequestInterface::getParam" param="id"/>-->
+        </defaultSearchCriteriaBindings>
+    </source>
+    <columns>
+        <!--<include keepAllSourceColumns="true">-->
+            <!--<column name="increment_id"/>-->
+            <!--<column name="created_at" label="Purchased" type="datetime"/>
+            <column name="billing_address_id" label="Bill-to name" template="Hyva_AdminTest::customer/sales/bill-to-name.phtml"/>-->
+            <!--<column name="shipping_address_id" label="Ship-to name" template="Hyva_AdminTest::customer/sales/ship-to-name.phtml"/>-->
+            <!--<column name="base_grand_total" label="Total" type="price"/>
+            <column name="store_id" label="Purchase Point" type="store_id" renderAsUnsecureHtml="true"/>-->
+        <!--</include>-->
+    </columns>
+    <!--<actions idColumn="entity_id">
+        <action id="reorder" label="Reorder" url="sales/order_create/reorder" idParam="order_id"/>
+    </actions>-->
+    <!--<navigation>
+        <filters>
+            <filter column="increment_id"/>
+            <filter column="created_at"/>
+            <filter column="store_id"/>
+        </filters>
+    </navigation>-->
+</grid>
