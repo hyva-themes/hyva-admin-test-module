@@ -2,31 +2,41 @@
 <grid xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:noNamespaceSchemaLocation="urn:magento:module:Hyva_Admin:etc/hyva-grid.xsd">
     <source>
+        <!-- Example of a collection grid data provider -->
         <collection>Magento\Sales\Model\ResourceModel\Order\Grid\Collection</collection>
-        <!--<repositoryListMethod>\Magento\Sales\Api\OrderRepositoryInterface::getList</repositoryListMethod>-->
+
+        <!-- This takes care of showing the orders of the current customer in the grid. -->
         <defaultSearchCriteriaBindings>
             <field name="customer_id" requestParam="id"/>
-            <!--<field name="customer_id" method="Magento\Framework\App\RequestInterface::getParam" param="id"/>-->
         </defaultSearchCriteriaBindings>
     </source>
     <columns>
-        <!--<include keepAllSourceColumns="true">-->
-            <!--<column name="increment_id"/>-->
-            <!--<column name="created_at" label="Purchased" type="datetime"/>
-            <column name="billing_address_id" label="Bill-to name" template="Hyva_AdminTest::customer/sales/bill-to-name.phtml"/>-->
-            <!--<column name="shipping_address_id" label="Ship-to name" template="Hyva_AdminTest::customer/sales/ship-to-name.phtml"/>-->
-            <!--<column name="base_grand_total" label="Total" type="price"/>
-            <column name="store_id" label="Purchase Point" type="store_id" renderAsUnsecureHtml="true"/>-->
-        <!--</include>-->
+        <include>
+            <column name="increment_id" label="Order #"/>
+            <column name="created_at" label="Purchased" type="datetime"/>
+            <column name="billing_name" label="Bill-to Name"/>
+            <column name="shipping_name" label="Ship-to Name"/>
+            <column name="base_grand_total" label="Total" type="price"/>
+            <column name="store_id" label="Purchase Point" type="store_id" renderAsUnsecureHtml="true"/>
+        </include>
     </columns>
-    <!--<actions idColumn="entity_id">
+    <actions idColumn="entity_id">
         <action id="reorder" label="Reorder" url="sales/order_create/reorder" idParam="order_id"/>
-    </actions>-->
-    <!--<navigation>
+    </actions>
+    <navigation>
         <filters>
             <filter column="increment_id"/>
             <filter column="created_at"/>
-            <filter column="store_id"/>
+            <filter column="billing_name"/>
+            <filter column="shipping_name"/>
+            <filter column="base_grand_total" filterType="\Hyva\Admin\Model\GridFilter\ValueRangeFilter"/>
+            <!-- Workaround for rendering a dropdown filter until column independent source -->
+            <!-- models on filters are supported. -->
+            <filter column="store_id">
+                <option label="Default Store View">
+                    <value>1</value>
+                </option>
+            </filter>
         </filters>
-    </navigation>-->
+    </navigation>
 </grid>

@@ -2,7 +2,10 @@
 <grid xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:noNamespaceSchemaLocation="urn:magento:module:Hyva_Admin:etc/hyva-grid.xsd">
     <source>
+        <!-- Another example for a repository list method grid data provider -->
         <repositoryListMethod>\Magento\Sales\Api\OrderItemRepositoryInterface::getList</repositoryListMethod>
+
+        <!-- This binds the grid to show only the sales items for the current product -->
         <defaultSearchCriteriaBindings>
             <field name="product_id" requestParam="id"/>
         </defaultSearchCriteriaBindings>

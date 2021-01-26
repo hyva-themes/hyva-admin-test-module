@@ -6,10 +6,12 @@
  */
 -->
 <form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
-    <htmlContent name="orders_again">
+    <!-- This is an example of how the hyva grid block can be used in an htmlContent ui component like the  -->
+    <!-- adminhtml customer details page. This example grid replicates the customer orders grid. -->
+    <htmlContent name="orders_hyva">
         <block acl="Magento_Sales::actions_view" class="Magento\Ui\Component\Layout\Tabs\TabWrapper" name="orders_again">
             <arguments>
-                <argument name="tab_label" xsi:type="string">Orders... reloaded</argument>
+                <argument name="tab_label" xsi:type="string">Orders Hyva Example</argument>
             </arguments>
             <block name="hyva_orders_grid" class="Hyva\Admin\Block\Adminhtml\HyvaGrid">
                 <arguments>

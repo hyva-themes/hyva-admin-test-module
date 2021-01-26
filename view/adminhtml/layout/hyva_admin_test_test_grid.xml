@@ -4,6 +4,7 @@
     <update handle="hyva_admin_grid"/>
     <body>
         <referenceContainer name="content">
+            <!-- This is an example of how to specify the hyva admin grid block together with the grid name -->
             <block class="Hyva\Admin\Block\Adminhtml\HyvaGrid" name="demo-grid">
                 <arguments>
                     <argument name="grid_name" xsi:type="string">products-grid</argument>

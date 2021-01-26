@@ -1,10 +1,19 @@
 <?xml version="1.0"?>
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
-
+    <!-- Initialize tailwind and alpine on the product edit page for the product-sales-items grid -->
+    <update handle="hyva_admin_grid"/>
 
     <body>
         <referenceContainer name="content">
+            <!-- This example adds a grid with all order items matching this product to the product detail page -->
+            <block class="Magento\Framework\View\Element\Text" name="grid-title">
+                <arguments>
+                    <argument name="text" xsi:type="string"><![CDATA[
+                    <strong><span>Product Order Items Hyvä Grid Example</span></strong>
+                    ]]></argument>
+                </arguments>
+            </block>
             <block class="Hyva\Admin\Block\Adminhtml\HyvaGrid" name="order-items">
                 <arguments>
                     <argument name="grid_name" xsi:type="string">product-sales-items</argument>
