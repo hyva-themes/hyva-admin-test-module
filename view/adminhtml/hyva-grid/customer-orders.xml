@@ -30,13 +30,7 @@
             <filter column="billing_name"/>
             <filter column="shipping_name"/>
             <filter column="base_grand_total" filterType="\Hyva\Admin\Model\GridFilter\ValueRangeFilter"/>
-            <!-- Workaround for rendering a dropdown filter until column independent source -->
-            <!-- models on filters are supported. -->
-            <filter column="store_id">
-                <option label="Default Store View">
-                    <value>1</value>
-                </option>
-            </filter>
+            <filter column="store_id" source="\Magento\Config\Model\Config\Source\Store"/>
         </filters>
     </navigation>
 </grid>

@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<grid xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:module:Hyva_Admin:etc/hyva-grid.xsd">
+    <source>
+        <collection>\Magento\Cms\Model\ResourceModel\Page\Collection</collection>
+    </source>
+    <columns>
+        <include keepAllSourceColumns="true">
+            <!-- Example of fixing a column type where the automatically determined type is wrong. -->
+            <!-- A bit of background: -->
+            <!-- In this case, the `@method Page setStoreId(int $storeId)` annotation on \Magento\Cms\Model\Page -->
+            <!-- causes the reflection to expect an integer value. -->
+            <!-- In reality, the getStoreId() method on CMS Pages returns an array. -->
+            <column name="store_id" type="array"/>
+        </include>
+    </columns>
+</grid>
