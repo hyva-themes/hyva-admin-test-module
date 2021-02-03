@@ -54,6 +54,8 @@
             <filter column="category_ids"/>
             <filter column="id"/>
             <filter column="color">
+                <!-- example of using a multi-value filter option -->
+                <!-- note: the id's are do not really correspond with the color option IDs in the sample data -->
                 <option label="reddish">
                     <value>16</value>
                     <value>17</value>
