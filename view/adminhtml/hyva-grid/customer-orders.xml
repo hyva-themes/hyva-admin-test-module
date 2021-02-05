@@ -32,5 +32,9 @@
             <filter column="base_grand_total" filterType="\Hyva\Admin\Model\GridFilter\ValueRangeFilter"/>
             <filter column="store_id" source="\Magento\Config\Model\Config\Source\Store"/>
         </filters>
+        <sorting>
+            <defaultSortByColumn>created_at</defaultSortByColumn>
+            <defaultSortDirection>desc</defaultSortDirection>
+        </sorting>
     </navigation>
 </grid>

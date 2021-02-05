@@ -12,6 +12,7 @@
         <block acl="Magento_Sales::actions_view" class="Magento\Ui\Component\Layout\Tabs\TabWrapper" name="orders_again">
             <arguments>
                 <argument name="tab_label" xsi:type="string">Orders Hyva Example</argument>
+                <argument name="sort_order" xsi:type="number">50</argument>
             </arguments>
             <block name="hyva_orders_grid" class="Hyva\Admin\Block\Adminhtml\HyvaGrid">
                 <arguments>
