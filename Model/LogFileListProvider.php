@@ -8,16 +8,9 @@ use Magento\Framework\Filesystem\Io\FileFactory;
 
 class LogFileListProvider implements HyvaGridArrayProviderInterface
 {
+    private $directoryList;
 
-    /**
-     * @var DirectoryList
-     */
-    private DirectoryList $directoryList;
-
-    /**
-     * @var FileFactory
-     */
-    private FileFactory $fileFactory;
+    private $fileFactory;
 
     public function __construct(DirectoryList $directoryList, FileFactory $fileFactory)
     {

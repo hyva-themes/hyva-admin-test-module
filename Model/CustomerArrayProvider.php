@@ -10,21 +10,11 @@ use Magento\Framework\Reflection\DataObjectProcessor;
 
 class CustomerArrayProvider implements HyvaGridArrayProviderInterface
 {
+    private $customerRepository;
 
-    /**
-     * @var CustomerRepositoryInterface
-     */
-    private CustomerRepositoryInterface $customerRepository;
+    private $searchCriteriaBuilder;
 
-    /**
-     * @var SearchCriteriaBuilder
-     */
-    private SearchCriteriaBuilder $searchCriteriaBuilder;
-
-    /**
-     * @var DataObjectProcessor
-     */
-    private DataObjectProcessor $dataObjectProcessor;
+    private $dataObjectProcessor;
 
     public function __construct(
         CustomerRepositoryInterface $customerRepository,

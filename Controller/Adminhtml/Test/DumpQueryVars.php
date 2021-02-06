@@ -14,11 +14,11 @@ class DumpQueryVars extends Action implements HttpPostActionInterface, HttpGetAc
 {
     const ADMIN_RESOURCE = 'Hyva_AdminTest::test';
 
-    private RequestInterface $request;
+    private $request;
 
-    private JsonFactory $jsonFactory;
+    private $jsonFactory;
 
-    private PageFactory $pageFactory;
+    private $pageFactory;
 
     public function __construct(Context $context, RequestInterface $request, JsonFactory $jsonFactory, PageFactory $pageFactory)
     {
