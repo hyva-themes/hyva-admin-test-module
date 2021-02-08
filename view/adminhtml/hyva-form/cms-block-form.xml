@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:module:Hyva_Admin:etc/hyva-form.xsd">
+<!--    <load method="\Magento\Cms\Model\ResourceModel\Block::load">-->
+<!--        <argumentBindings>-->
+<!--            &lt;!&ndash; public function load(AbstractModel $object, $value, $field = null) &ndash;&gt;-->
+<!--            <argument name="value" requestParam="id"/>-->
+<!--        </argumentBindings>-->
+<!--    </load>-->
+<!--    <load method="\Magento\Cms\Model\Block::load">-->
+<!--        <argumentBindings>-->
+<!--            <argument name="modelId" requestParam="id"/>-->
+<!--        </argumentBindings>-->
+<!--    </load>-->
+    <load method="\Magento\Cms\Api\BlockRepositoryInterface::getById">
+        <argumentBindings>
+            <argument name="blockId" requestParam="id"/>
+        </argumentBindings>
+    </load>
+</form>
