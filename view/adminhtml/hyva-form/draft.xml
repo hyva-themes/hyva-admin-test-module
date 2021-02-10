@@ -6,8 +6,9 @@
             <argument name="customer_id" requestParam="id"/>
         </argumentBindings>
     </load>
-    <save method="\Magento\Customer\Api\CustomerRepositoryInterface::save" param="customer">
+    <save method="\Magento\Customer\Api\CustomerRepositoryInterface::save">
         <argumentBindings>
+            <argument name="customer" formData="true"/>
             <argument name="passwordHash" method="\My\Module\Model\CustomerPassword::hash"/>
         </argumentBindings>
     </save>
@@ -35,4 +36,14 @@
             <field name="updated_at"/>
         </exclude>
     </fields>
+    <navigation>
+        <buttons>
+            <button id="save" label="Save" url="hyva_admin/form/save" enabled="false" />
+            <button id="only-visible-when-entity-was-loaded" label="Example" hiddenForNewEntity="true"/>
+            <button id="reset" label="Reset" url="*/*/*"/>
+            <button id="validate">
+                <event on="click"/>
+            </button>
+        </buttons>
+    </navigation>
 </form>
