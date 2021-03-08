@@ -14,11 +14,7 @@
                 <argument name="tab_label" xsi:type="string">Orders Hyva Example</argument>
                 <argument name="sort_order" xsi:type="number">50</argument>
             </arguments>
-            <block name="hyva_orders_grid" class="Hyva\Admin\Block\Adminhtml\HyvaGrid">
-                <arguments>
-                    <argument name="grid_name" xsi:type="string">customer-orders</argument>
-                </arguments>
-            </block>
+            <block name="hyva-customer-orders" class="Hyva\Admin\Block\Adminhtml\HyvaGrid"/>
         </block>
     </htmlContent>
 </form>
