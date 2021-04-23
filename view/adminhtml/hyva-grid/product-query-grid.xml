@@ -59,7 +59,7 @@
             </select>
         </query>
         <processors>
-            <processor class="\Hyva\AdminTest\HyvaGridProcessor\ProductGridQueryProcessor" enabled="false"/>
+            <processor class="\Hyva\AdminTest\HyvaGridProcessor\ProductGridQueryProcessor"/>
         </processors>
     </source>
     <columns>
