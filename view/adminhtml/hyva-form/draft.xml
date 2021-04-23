@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:module:Hyva_Admin:etc/hyva-form.xsd">
+    <load method="\Magento\Customer\Api\CustomerRepositoryInterface::getById">
+        <argumentBindings>
+            <argument name="customer_id" requestParam="id"/>
+        </argumentBindings>
+    </load>
+    <save method="\Magento\Customer\Api\CustomerRepositoryInterface::save">
+        <argumentBindings>
+            <argument name="customer" formData="true"/>
+            <argument name="passwordHash" method="\My\Module\Model\CustomerPassword::hash"/>
+        </argumentBindings>
+    </save>
+    <sections>
+        <section id="foo" label="Foos" sortOrder="10">
+            <group id="important-things" sortOrder="10"/>
+            <group id="details" sortOrder="20"/>
+        </section>
+        <section id="bar" label="Bars" sortOrder="20">
+            <group id="whatever" sortOrder="10"/>
+        </section>
+    </sections>
+    <fields>
+        <include keepAllSourceFields="true">
+            <field name="identifier" group="important-things"/>
+            <field name="title" template="My_Module::form/title-field.phtml" group="important-things"/>
+            <field name="content" type="wysiwig" group="details"/>
+            <field name="creation_time" type="datetime" group="whatever"/>
+            <field name="is_active" type="boolean" group="non-existant"/>
+            <field name="comment" enabled="false"/>
+            <field name="store_ids" type="select" source="\Magento\Eav\Model\Entity\Attribute\Source\Store"/>
+            <field name="admin" valueProcessor="\My\Module\Form\AdminLinkProcessor"/>
+        </include>
+        <exclude>
+            <field name="updated_at"/>
+        </exclude>
+    </fields>
+    <navigation>
+        <buttons>
+            <button id="save" label="Save" url="hyva_admin/form/save" enabled="false" />
+            <button id="only-visible-when-entity-was-loaded" label="Example" hiddenForNewEntity="true"/>
+            <button id="reset" label="Reset" url="*/*/*"/>
+            <button id="validate">
+                <event on="click"/>
+            </button>
+        </buttons>
+    </navigation>
+</form>

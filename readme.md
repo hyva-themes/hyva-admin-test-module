@@ -17,6 +17,6 @@ PR's are very welcome.
 
 ## Copyright & License
 
-Copyright 2020 Vinai Kopp & Hyvä Themes BV
+Copyright 2021 Vinai Kopp & Hyvä Themes BV
 
 The module is released under the [BSD-3 Clause license](LICENSE.txt).

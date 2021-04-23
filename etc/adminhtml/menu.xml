@@ -2,9 +2,13 @@
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
     <menu>
-        <add id="Hyva_AdminTest::test" title="Hyvä Test" translate="title" module="Hyva_AdminTest"
+        <add id="Hyva_AdminTest::test_grid" title="Hyvä Grid Test" translate="title" module="Hyva_AdminTest"
              parent="Magento_Backend::system_tools"
              sortOrder="30" dependsOnModule="Hyva_AdminTest" resource="Hyva_AdminTest::test"
              action="hyva_admin_test/test/grid"/>
+        <add id="Hyva_AdminTest::test_form" title="Hyvä Form Test" translate="title" module="Hyva_AdminTest"
+             parent="Magento_Backend::system_tools"
+             sortOrder="31" dependsOnModule="Hyva_AdminTest" resource="Hyva_AdminTest::test"
+             action="hyva_admin_test/test/form"/>
     </menu>
 </config>

@@ -1,0 +1,107 @@
+<?xml version="1.0"?>
+<grid xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:module:Hyva_Admin:etc/hyva-grid.xsd">
+    <source>
+        <query>
+            <select>
+                <from table="catalog_product_entity" as="e"/>
+                <columns>
+                    <column name="entity_id" as="id"/>
+                    <column name="attribute_set_id"/>
+                    <column name="type_id"/>
+                    <column name="sku"/>
+                </columns>
+                <join table="cataloginventory_stock_item" as="t_qty">
+                    <on>t_qty.product_id=e.entity_id AND t_qty.stock_id=1</on>
+                    <columns>
+                        <column name="qty"/>
+                    </columns>
+                </join>
+                <join table="catalog_product_entity_varchar" as="t_name">
+                    <on>e.entity_id=t_name.entity_id AND t_name.attribute_id=:name_id AND t_name.store_id=0</on>
+                    <columns>
+                        <column name="value" as="name"/>
+                    </columns>
+                </join>
+                <join table="catalog_product_entity_varchar" as="t_thumbnail">
+                    <on>e.entity_id=t_thumbnail.entity_id AND t_thumbnail.attribute_id=:thumbnail_id AND t_thumbnail.store_id=0</on>
+                    <columns>
+                        <column name="value" as="thumbnail"/>
+                    </columns>
+                </join>
+                <join table="catalog_product_entity_int" as="t_visibility">
+                    <on>e.entity_id=t_visibility.entity_id AND t_visibility.attribute_id=:visibility_id AND t_visibility.store_id=0</on>
+                    <columns>
+                        <column name="value" as="visibility"/>
+                    </columns>
+                </join>
+                <join table="catalog_product_entity_int" as="t_status">
+                    <on>e.entity_id=t_status.entity_id AND t_status.attribute_id=:status_id AND t_status.store_id=0</on>
+                    <columns>
+                        <column name="value" as="status"/>
+                    </columns>
+                </join>
+                <join table="catalog_product_entity_decimal" as="t_price">
+                    <on>e.entity_id=t_price.entity_id AND t_price.attribute_id=:price_id AND t_price.store_id=0</on>
+                    <columns>
+                        <column name="value" as="price"/>
+                    </columns>
+                </join>
+                <join table="catalog_product_website" as="t_website">
+                    <on>e.entity_id=t_website.product_id</on>
+                    <columns>
+                        <expression as="website_ids">GROUP_CONCAT(t_website.website_id SEPARATOR ',')</expression>
+                    </columns>
+                </join>
+                <groupBy>
+                    <column name="t_website.product_id"/>
+                </groupBy>
+            </select>
+        </query>
+        <processors>
+            <processor class="\Hyva\AdminTest\HyvaGridProcessor\ProductGridQueryProcessor" enabled="false"/>
+        </processors>
+    </source>
+    <columns>
+        <include keepAllSourceColumns="false">
+            <column name="id"/>
+            <column name="thumbnail" type="magento_product_image" renderAsUnsecureHtml="true" label="Thumbnail" sortable="false"/>
+            <column name="name" label="Name"/>
+            <column name="type_id" label="Type" source="Magento\Catalog\Model\Product\Type"/>
+            <column name="attribute_set_id" label="Attribute Set" source="Magento\Catalog\Model\Product\AttributeSet\Options"/>
+            <column name="sku"/>
+            <column name="price" type="price"/>
+            <column name="qty" label="Quantity" type="string"/>
+            <column name="visibility" source="Magento\Catalog\Model\Product\Visibility"/>
+            <column name="status" label="Status" source="Magento\Catalog\Model\Product\Attribute\Source\Status"/>
+            <column name="website_ids" label="Websites" type="website_id" source="Magento\Store\Model\ResourceModel\Website\Collection"/>
+        </include>
+    </columns>
+    <actions idColumn="id">
+        <action id="edit" label="Edit" url="catalog/product/edit"/>
+    </actions>
+    <entityConfig>
+        <label>
+            <singular>Product</singular>
+            <plural>Products</plural>
+        </label>
+    </entityConfig>
+    <navigation>
+        <pager>
+            <pageSizes>20,30,50,100,200</pageSizes>
+        </pager>
+        <filters>
+            <filter column="id"/>
+            <filter column="name"/>
+            <filter column="sku"/>
+            <filter column="type_id"/>
+            <filter column="attribute_set_id"/>
+            <filter column="visibility"/>
+            <filter column="status"/>
+            <filter column="website_ids"/>
+        </filters>
+        <buttons>
+            <button id="add" url="catalog/product/new/set/4"/>
+        </buttons>
+    </navigation>
+</grid>

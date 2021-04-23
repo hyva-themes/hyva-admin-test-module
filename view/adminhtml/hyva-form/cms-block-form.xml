@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:module:Hyva_Admin:etc/hyva-form.xsd">
+<!--    <load method="\Magento\Cms\Model\ResourceModel\Block::load">-->
+<!--        <argumentBindings>-->
+<!--            &lt;!&ndash; public function load(AbstractModel $object, $value, $field = null) &ndash;&gt;-->
+<!--            <argument name="value" requestParam="id"/>-->
+<!--        </argumentBindings>-->
+<!--    </load>-->
+<!--    <load method="\Magento\Cms\Model\Block::load">-->
+<!--        <argumentBindings>-->
+<!--            <argument name="modelId" requestParam="id"/>-->
+<!--        </argumentBindings>-->
+<!--    </load>-->
+    <load method="\Magento\Cms\Api\BlockRepositoryInterface::getById">
+        <bindArguments>
+            <argument name="blockId" requestParam="id"/>
+        </bindArguments>
+    </load>
+    <sections>
+        <section id="general" label="General" sortOrder="10">
+            <group id="required" label="Required Fields" sortOrder="10"/>
+            <group id="optional" label="Optional Fields" sortOrder="20"/>
+        </section>
+    </sections>
+    <fields>
+        <include>
+<!--            <field name="identifier"/>-->
+            <field name="identifier" group="required"/>
+            <field name="content" group="optional"/>
+            <field name="active" group="optional"/>
+        </include>
+    </fields>
+</form>

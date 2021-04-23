@@ -36,6 +36,11 @@
         </label>
     </entityConfig>
     <navigation>
+        <exports>
+            <export type="csv" label="Export as CSV"/>
+            <export type="xml"/>
+            <export type="xlsx" label="Export as XLSX"/>
+        </exports>
         <pager>
             <defaultPageSize>5</defaultPageSize>
             <pageSizes>2, 5, 10</pageSizes>
