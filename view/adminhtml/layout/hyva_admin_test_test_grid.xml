@@ -5,11 +5,7 @@
     <body>
         <referenceContainer name="content">
             <!-- This is an example of how to specify the hyva admin grid block together with the grid name -->
-            <block class="Hyva\Admin\Block\Adminhtml\HyvaGrid" name="demo-grid">
-                <arguments>
-                    <argument name="grid_name" xsi:type="string">products-grid</argument>
-                </arguments>
-            </block>
+            <block class="Hyva\Admin\Block\Adminhtml\HyvaGrid" name="products-grid"/>
         </referenceContainer>
     </body>
 </page>

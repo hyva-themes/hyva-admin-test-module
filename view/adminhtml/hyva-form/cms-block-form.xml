@@ -13,8 +13,22 @@
 <!--        </argumentBindings>-->
 <!--    </load>-->
     <load method="\Magento\Cms\Api\BlockRepositoryInterface::getById">
-        <argumentBindings>
+        <bindArguments>
             <argument name="blockId" requestParam="id"/>
-        </argumentBindings>
+        </bindArguments>
     </load>
+    <sections>
+        <section id="general" label="General" sortOrder="10">
+            <group id="required" label="Required Fields" sortOrder="10"/>
+            <group id="optional" label="Optional Fields" sortOrder="20"/>
+        </section>
+    </sections>
+    <fields>
+        <include>
+<!--            <field name="identifier"/>-->
+            <field name="identifier" group="required"/>
+            <field name="content" group="optional"/>
+            <field name="active" group="optional"/>
+        </include>
+    </fields>
 </form>

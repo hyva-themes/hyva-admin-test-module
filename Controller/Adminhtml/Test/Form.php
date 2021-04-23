@@ -10,7 +10,10 @@ class Form extends Action
 {
     const ADMIN_RESOURCE = 'Hyva_AdminTest::test';
 
-    private PageFactory $pageFactory;
+    /**
+     * @var PageFactory
+     */
+    private $pageFactory;
 
     public function __construct(Context $context, PageFactory $pageFactory)
     {

@@ -12,15 +12,15 @@
             <argument name="passwordHash" method="\My\Module\Model\CustomerPassword::hash"/>
         </argumentBindings>
     </save>
-    <tabs>
-        <tab id="foo" label="Foos" sortOrder="10">
+    <sections>
+        <section id="foo" label="Foos" sortOrder="10">
             <group id="important-things" sortOrder="10"/>
             <group id="details" sortOrder="20"/>
-        </tab>
-        <tab id="bar" label="Bars" sortOrder="20">
+        </section>
+        <section id="bar" label="Bars" sortOrder="20">
             <group id="whatever" sortOrder="10"/>
-        </tab>
-    </tabs>
+        </section>
+    </sections>
     <fields>
         <include keepAllSourceFields="true">
             <field name="identifier" group="important-things"/>
