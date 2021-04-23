@@ -63,7 +63,7 @@
         </processors>
     </source>
     <columns>
-        <include keepAllSourceColumns="false">
+        <include>
             <column name="id"/>
             <column name="thumbnail" type="magento_product_image" renderAsUnsecureHtml="true" label="Thumbnail" sortable="false"/>
             <column name="name" label="Name"/>
