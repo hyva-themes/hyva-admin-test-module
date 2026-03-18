@@ -1,24 +1,55 @@
 <?xml version="1.0"?>
-<!--
-/**
- * Hyvä Themes - https://hyva.io
- * Copyright © Hyvä Themes. All rights reserved.
- * See COPYING.txt for license details.
- */
--->
-<grid xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-      xsi:noNamespaceSchemaLocation="urn:magento:module:Hyva_Admin:etc/hyva-grid.xsd">
+<grid xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Hyva_Admin:etc/hyva-grid.xsd">
     <source>
         <collection>\Magento\Cms\Model\ResourceModel\Page\Collection</collection>
     </source>
     <columns>
-        <include keepAllSourceColumns="true">
-            <!-- Example of fixing a column type where the automatically determined type is wrong. -->
-            <!-- A bit of background: -->
-            <!-- In this case, the `@method Page setStoreId(int $storeId)` annotation on \Magento\Cms\Model\Page -->
-            <!-- causes the reflection to expect an integer value. -->
-            <!-- In reality, the getStoreId() method on CMS Pages returns an array. -->
-            <column name="store_id" type="array"/>
+        <include>
+            <column name="id" label="ID"/>
+            <column name="title"/>
+            <column name="identifier" label="URL Key"/>
+            <column name="page_layout" label="Layout" source="\Magento\Cms\Model\Page\Source\PageLayout"/>
+            <column name="store_id" label="Store View" type="store_id"/>
+            <column name="is_active" label="Status" source="\Magento\Cms\Model\Page\Source\IsActive"/>
+            <column name="creation_time" label="Created"/>
+            <column name="update_time" label="Modified"/>
         </include>
     </columns>
+    <actions idColumn="id">
+        <action id="edit" label="Edit" url="cms/page/edit" idParam="page_id"/>
+        <action id="delete" label="Delete" url="cms/page/delete" idParam="page_id"/>
+    </actions>
+	<massActions idColumn="id" idsParam="selected">
+        <action id="delete" label="Delete" url="cms/page/massDelete" requireConfirmation="true"/>
+        <action id="disable" label="Disable" url="cms/page/massDisable"/>
+        <action id="enable" label="Enable" url="cms/page/massEnable"/>
+    </massActions>
+    <entityConfig>
+        <label>
+            <singular>Page</singular>
+            <plural>Pages</plural>
+        </label>
+    </entityConfig>
+    <navigation>
+        <buttons>
+            <button id="new" label="Add New Page" url="cms/page/new/"/>
+        </buttons>
+        <pager>
+            <defaultPageSize>20</defaultPageSize>
+            <pageSizes>20,30,50,100,200</pageSizes>
+        </pager>
+        <sorting>
+            <defaultSortByColumn>id</defaultSortByColumn>
+            <defaultSortDirection>asc</defaultSortDirection>
+        </sorting>
+        <filters>
+            <filter column="id"/>
+            <filter column="title"/>
+            <filter column="identifier"/>
+            <filter column="page_layout" filterType="\Hyva\Admin\Model\GridFilter\SelectFilter" source="\Magento\Cms\Model\Page\Source\PageLayout"/>
+            <filter column="is_active"/>
+            <filter column="creation_time" filterType="\Hyva\Admin\Model\GridFilter\DateRangeFilter"/>
+            <filter column="update_time" filterType="\Hyva\Admin\Model\GridFilter\DateRangeFilter"/>
+        </filters>
+    </navigation>
 </grid>

@@ -1,0 +1,117 @@
+<?php
+/**
+ * @var \Hyva\AdminTest\Block\Adminhtml\CacheButton $block
+ */
+?>
+<div class="w-full flex" style="
+    clear: both;
+    display: flex;
+    justify-content: flex-end;
+">
+    <div class="flex space-x-4 menucustom" style="
+        background-color: #101828;
+        padding: 3px 7px;
+        font-size: 1.3rem;
+        align-items: center;
+        cursor: pointer;
+        border-radius: 3px;
+        color: white;
+    ">
+        <?php if ($block->isAllowed('Magento_Sales::sales_order')): ?>
+            <a href="<?= $block->escapeUrl($block->getUrl('hyva_admin_test/sales/order')) ?>" 
+               aria-current="page" 
+               class="rounded-md bg-gray-950/50 px-3 py-2 text-sm font-medium text-white">
+                Order
+            </a>
+            <span>-</span>
+        <?php endif; ?>
+
+        <?php if ($block->isAllowed('Magento_Catalog::products')): ?>
+            <a href="<?= $block->escapeUrl($block->getUrl('hyva_admin_test/catalog/product')) ?>" 
+               class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-white/5 hover:text-white">
+                Product
+            </a>
+            <span>-</span>
+        <?php endif; ?>
+
+        <?php if ($block->isAllowed('Magento_Catalog::categories')): ?>
+            <a href="<?= $block->escapeUrl($block->getUrl('catalog/category')) ?>" 
+               class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-white/5 hover:text-white">
+                Category
+            </a>
+            <span>-</span>
+        <?php endif; ?>
+
+        <?php if ($block->isAllowed('Magento_Cms::block')): ?>
+            <a href="<?= $block->escapeUrl($block->getUrl('hyva_admin_test/cms/block')) ?>" 
+               class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-white/5 hover:text-white">
+                Block
+            </a>
+            <span>-</span>
+        <?php endif; ?>
+
+        <?php if ($block->isAllowed('Magento_Cms::page')): ?>
+            <a href="<?= $block->escapeUrl($block->getUrl('hyva_admin_test/cms/page')) ?>" 
+               class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-white/5 hover:text-white">
+                Page
+            </a>
+            <span>-</span>
+        <?php endif; ?>
+
+        <?php if ($block->isAllowed('Magento_Config::config')): ?>
+            <a href="<?= $block->escapeUrl($block->getUrl('admin/system_config')) ?>" 
+               class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-white/5 hover:text-white">
+                Config
+            </a>
+        <?php endif; ?>
+
+        <?php if ($block->canFlushCache()): ?>
+            <div class="admin-cache-button-wrapper" style="display: inline-block; margin-left: 20px;">
+                <button type="button" 
+                        class="action-secondary" 
+                        onclick="flushMagentoCache()"
+                        title="<?= $block->escapeHtmlAttr(__('Flush Magento Cache')) ?>">
+                    <span><?= $block->escapeHtml(__('Flush Cache')) ?></span>
+                </button>
+            </div>
+        <?php endif; ?>
+    </div>
+</div>
+
+<script type="text/javascript">
+    require(['Magento_Ui/js/modal/confirm'], function(confirmation) {
+        window.flushMagentoCache = function() {
+            confirmation({
+                title: '<?= $block->escapeJs(__('Flush Magento Cache')) ?>',
+                content: '<?= $block->escapeJs(__('Are you sure you want to flush the Magento cache?')) ?>',
+                actions: {
+                    confirm: function() {
+                        window.location.href = '<?= $block->escapeUrl($block->getFlushCacheUrl()) ?>?form_key=' + window.FORM_KEY;
+                    }
+                }
+            });
+        };
+    });
+</script>
+
+<style type="text/css">
+.menucustom a {
+    color: white;
+}
+.admin-cache-button-wrapper {
+    vertical-align: middle;
+}
+.admin-cache-button-wrapper .action-secondary {
+    background-color: #eb5202;
+    border-color: #eb5202;
+    color: #fff;
+    padding: 7px 15px;
+    font-size: 1.3rem;
+    cursor: pointer;
+    border-radius: 3px;
+}
+.admin-cache-button-wrapper .action-secondary:hover {
+    background-color: #d14802;
+    border-color: #d14802;
+}
+</style>

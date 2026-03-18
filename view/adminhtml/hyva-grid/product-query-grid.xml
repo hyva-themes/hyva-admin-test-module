@@ -84,9 +84,14 @@
             <column name="website_ids" label="Websites" type="website_id" source="Magento\Store\Model\ResourceModel\Website\Collection"/>
         </include>
     </columns>
-    <actions idColumn="id">
-        <action id="edit" label="Edit" url="catalog/product/edit"/>
+	<actions idColumn="id">
+        <action id="edit" label="Edit" url="catalog/product/edit" />
     </actions>
+    <massActions idColumn="id" idsParam="ids">
+		<action id="delete" label="Delete" url="catalog/product/massDelete" requireConfirmation="true"/>
+        <action id="enable" label="Enable" url="catalog/product/massStatus/status/1/" requireConfirmation="true"/>
+        <action id="disable" label="Disable" url="catalog/product/massStatus/status/0/" requireConfirmation="true"/>
+    </massActions>
     <entityConfig>
         <label>
             <singular>Product</singular>
@@ -94,9 +99,23 @@
         </label>
     </entityConfig>
     <navigation>
+        <exports>
+            <export type="csv" label="Export as CSV"/>
+            <export type="xml"/>
+            <export type="xlsx" label="Export as XLSX"/>
+        </exports>
         <pager>
+            <defaultPageSize>20</defaultPageSize>
             <pageSizes>20,30,50,100,200</pageSizes>
         </pager>
+        <buttons>
+            <button id="add" url="catalog/product/new/set/4/type/simple"/>
+            <button id="refresh" label="Refresh Page" onclick="window.location.reload(true)" sortOrder="-1"/>
+        </buttons>
+        <sorting>
+            <defaultSortByColumn>id</defaultSortByColumn>
+            <defaultSortDirection>desc</defaultSortDirection>
+        </sorting>
         <filters>
             <filter column="id"/>
             <filter column="name"/>
@@ -107,8 +126,5 @@
             <filter column="status"/>
             <filter column="website_ids"/>
         </filters>
-        <buttons>
-            <button id="add" url="catalog/product/new/set/4"/>
-        </buttons>
     </navigation>
 </grid>

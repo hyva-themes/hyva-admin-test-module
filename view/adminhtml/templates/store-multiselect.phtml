@@ -1,0 +1,42 @@
+<?php declare(strict_types=1);
+
+/** @var \Magento\Framework\View\Element\Template $block */
+/** @var \Magento\Framework\Escaper $escaper */
+/** @var \Hyva\Admin\ViewModel\HyvaForm\FormFieldDefinitionInterface $field */
+
+$escaper = $escaper ?? $block;
+
+$values = $field->getValue();
+$values = null !== $values
+    ? array_map('strval', is_array($values) ? $values : [$values])
+    : [];
+?>
+<select multiple
+        id="<?= $escaper->escapeHtmlAttr($field->getName()) ?>"
+        name="<?= $escaper->escapeHtmlAttr($field->getName()) ?>[]"
+        form="<?= $field->getFormName() ?>"
+        <?= $field->isRequired() ? 'required' : '' ?>
+        <?= $field->isDisabled() ? 'disabled' : '' ?>
+        class="w-5/6 text-base rounded-md"
+        size="10">
+    <?php foreach ($field->getOptions() as $option): ?>
+        <?php if (isset($option['value']) && is_array($option['value'])): ?>
+            <?php /* Group (Website / Store) */ ?>
+            <optgroup label="<?= $escaper->escapeHtmlAttr($option['label']) ?>">
+                <?php foreach ($option['value'] as $subOption): ?>
+                    <option value="<?= $escaper->escapeHtmlAttr($subOption['value']) ?>"
+                        <?= in_array(strval($subOption['value']), $values, true) ? 'selected' : '' ?>
+                        style="padding-left: 1rem;">
+                        &nbsp;&nbsp;&nbsp;&nbsp;<?= $escaper->escapeHtml($subOption['label']) ?>
+                    </option>
+                <?php endforeach; ?>
+            </optgroup>
+        <?php else: ?>
+            <?php /* All Store Views (value=0) */ ?>
+            <option value="<?= $escaper->escapeHtmlAttr($option['value']) ?>"
+                <?= in_array(strval($option['value']), $values, true) ? 'selected' : '' ?>>
+                <?= $escaper->escapeHtml($option['label']) ?>
+            </option>
+        <?php endif; ?>
+    <?php endforeach; ?>
+</select>

@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<grid xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Hyva_Admin:etc/hyva-grid.xsd">
+    <source>
+        <collection>\Magento\Cms\Model\ResourceModel\Block\Collection</collection>
+    </source>
+    <columns>
+        <include>
+            <column name="id" label="ID"/>
+            <column name="title"/>
+            <column name="identifier" label="URL Key"/>
+            <column name="store_id" label="Store View" type="store_id"/>
+            <column name="is_active" label="Status" source="\Magento\Cms\Model\Page\Source\IsActive"/>
+            <column name="creation_time" label="Created"/>
+            <column name="update_time" label="Modified"/>
+        </include>
+    </columns>
+    <actions idColumn="id">
+        <!-- <action id="edit" label="Edit" url="cms/block/edit" idParam="page_id"/> -->
+        <action id="edit" label="Edit" url="hyva_admin_test/test/form" idParam="id"/>
+        <action id="delete" label="Delete" url="cms/block/delete" idParam="id"/>
+    </actions>
+	<massActions idColumn="id" idsParam="selected">
+        <action id="delete" label="Delete" url="cms/block/massDelete" requireConfirmation="true"/>
+    </massActions>
+    <entityConfig>
+        <label>
+            <singular>Block</singular>
+            <plural>Blocks</plural>
+        </label>
+    </entityConfig>
+    <navigation>
+        <buttons>
+            <button id="new" label="Add New Block" url="hyva_admin_test/test/form"/>
+            <!-- <button id="new" label="Add New Block" url="cms/block/new/"/> -->
+        </buttons>
+        <pager>
+            <defaultPageSize>20</defaultPageSize>
+            <pageSizes>20,30,50,100,200</pageSizes>
+        </pager>
+        <sorting>
+            <defaultSortByColumn>id</defaultSortByColumn>
+            <defaultSortDirection>asc</defaultSortDirection>
+        </sorting>
+        <filters>
+            <filter column="id"/>
+            <filter column="title"/>
+            <filter column="identifier"/>
+            <filter column="is_active"/>
+            <filter column="creation_time" filterType="\Hyva\Admin\Model\GridFilter\DateRangeFilter"/>
+            <filter column="update_time" filterType="\Hyva\Admin\Model\GridFilter\DateRangeFilter"/>
+        </filters>
+    </navigation>
+</grid>

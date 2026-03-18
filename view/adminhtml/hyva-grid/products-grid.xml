@@ -6,35 +6,40 @@
  * See COPYING.txt for license details.
  */
 -->
-<grid xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-      xsi:noNamespaceSchemaLocation="urn:magento:module:Hyva_Admin:etc/hyva-grid.xsd">
+<grid xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Hyva_Admin:etc/hyva-grid.xsd">
     <source>
         <repositoryListMethod>\Magento\Catalog\Api\ProductRepositoryInterface::getList</repositoryListMethod>
+        <processors>
+            <processor class="\Hyva\AdminTest\HyvaGridProcessor\ProductGridQueryProcessor"/>
+        </processors>
     </source>
     <columns rowAction="test">
         <include>
-            <column name="id" sortOrder="10"/>
-            <column name="sku" sortOrder="20"/>
-            <column name="name" initiallyHidden="true"/>
-            <column name="image" type="magento_product_image" renderAsUnsecureHtml="true" label="Main Image"
-                    template="Hyva_AdminTest::image.phtml"/>
-            <!--column name="activity"/--> <!-- because it breaks the test page if sample data is not installed -->
+            <column name="id"/>
+            <column name="thumbnail" type="magento_product_image" renderAsUnsecureHtml="true" label="Thumbnail" sortable="false"/>
+            <column name="name" label="Name"/>
+            <column name="type_id" label="Type" source="Magento\Catalog\Model\Product\Type"/>
+            <column name="attribute_set_id" label="Attribute Set" source="Magento\Catalog\Model\Product\AttributeSet\Options"/>
+            <column name="sku"/>
             <column name="price" type="price"/>
-            <column name="media_gallery" renderAsUnsecureHtml="true"/>
+            <!-- <column name="qty" label="Quantity" type="Hyva\AdminTest\Model\QtyValueProcessor"/> -->
+            <column name="visibility" source="Magento\Catalog\Model\Product\Visibility"/>
+            <column name="status" label="Status" source="Magento\Catalog\Model\Product\Attribute\Source\Status"/>
+            <column name="website_ids" label="Websites" type="website_id" source="Magento\Store\Model\ResourceModel\Website\Collection"/>
         </include>
         <exclude>
             <column name="category_gear"/>
         </exclude>
     </columns>
     <actions idColumn="id">
-        <action id="edit" label="Edit" url="*/*/edit"/>
-        <action id="delete" label="Delete" url="*/*/delete"/>
-        <action id="test" label="Test" url="*/*/dumpqueryvars"/>
+        <action id="edit" label="Edit" url="catalog/product/edit"/>
+        <action id="delete" label="Delete" url="catalog/product/delete"/>
+        <!-- <action id="test" label="Test" url="*/*/dumpqueryvars"/> -->
     </actions>
     <massActions idColumn="id" idsParam="ids">
-        <action id="test" label="Test Query Params" url="*/*/dumpqueryvars"/>
-        <action id="reindex" label="Reindex" url="*/massAction/reindex"/>
-        <action id="delete" label="Delete" url="*/massAction/delete" requireConfirmation="true"/>
+        <!-- <action id="test" label="Test Query Params" url="*/*/dumpqueryvars"/> -->
+        <action id="reindex" label="Reindex" url="catalog/massAction/reindex"/>
+        <action id="delete" label="Delete" url="catalog/product/massDelete" requireConfirmation="true"/>
     </massActions>
     <entityConfig>
         <label>
@@ -53,7 +58,7 @@
             <pageSizes>2, 5, 10</pageSizes>
         </pager>
         <buttons>
-            <button id="add" label="Add" url="*/*/add"/>
+            <button id="add" url="catalog/product/new/set/4/type/simple"/>
             <button id="refresh" label="Refresh Page" onclick="window.location.reload(true)" sortOrder="-1"/>
         </buttons>
         <sorting>
@@ -61,25 +66,14 @@
             <defaultSortDirection>desc</defaultSortDirection>
         </sorting>
         <filters>
-            <filter column="sku"/>
-            <!--<filter column="activity"/>--> <!-- because it breaks the test page if sample data is not installed -->
-            <filter column="category_ids"/>
             <filter column="id"/>
-            <filter column="color">
-                <!-- example of using a multi-value filter option -->
-                <!-- note: the id's are do not really correspond with the color option IDs in the sample data -->
-                <option label="reddish">
-                    <value>16</value>
-                    <value>17</value>
-                    <value>18</value>
-                </option>
-                <option label="blueish">
-                    <value>12</value>
-                </option>
-                <option label="rose">
-                    <value>100</value>
-                </option>
-            </filter>
+            <filter column="name"/>
+            <filter column="sku"/>
+            <filter column="type_id"/>
+            <filter column="attribute_set_id"/>
+            <filter column="visibility"/>
+            <filter column="status"/>
+            <filter column="website_ids"/>
         </filters>
     </navigation>
 </grid>

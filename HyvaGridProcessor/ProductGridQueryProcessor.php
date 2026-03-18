@@ -48,15 +48,17 @@ class ProductGridQueryProcessor extends AbstractGridSourceProcessor
     }
 
     /**
-     * @param Select $select
+     * @param mixed $source
      * @param SearchCriteriaInterface $searchCriteria
      * @param string $gridName
      */
-    public function beforeLoad($select, SearchCriteriaInterface $searchCriteria, string $gridName): void
+    public function beforeLoad($source, SearchCriteriaInterface $searchCriteria, string $gridName): void
     {
-        $this->addAttributeIdBindings($select);
-
-        $this->applyWebsiteFilter($searchCriteria, $select);
+        if ($source instanceof Select) {
+            $this->addAttributeIdBindings($source);
+            $this->applyWebsiteFilter($searchCriteria, $source);
+        }
+        // other source types are intentionally ignored; nothing to do for repository lists
     }
 
     private function getWebsiteFilter(SearchCriteriaInterface $searchCriteria): ?Filter

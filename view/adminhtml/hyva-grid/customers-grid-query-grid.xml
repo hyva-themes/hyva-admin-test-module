@@ -1,0 +1,92 @@
+<?xml version="1.0"?>
+<grid xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Hyva_Admin:etc/hyva-grid.xsd">
+    <source>
+        <query>
+            <select>
+                <from table="customer_grid_flat" as="e"/>
+                <columns>
+                    <column name="entity_id" as="customer_id"/>
+                    <column name="name" as="customer_name"/>
+                    <column name="email"/>
+                    <column name="group_id"/>
+                    <column name="billing_telephone"/>
+                    <column name="billing_postcode"/>
+                    <column name="billing_country_id"/>
+                    <column name="billing_region"/>
+                    <column name="created_at"/>
+                    <column name="website_id"/>
+                    <column name="confirmation"/>
+                    <column name="created_in"/>
+                    <column name="dob"/>
+                    <column name="taxvat"/>
+                    <column name="gender"/>
+                </columns>
+            </select>
+        </query>
+    </source>
+    <columns rowAction="edit">
+        <include>
+            <column name="customer_id" label="ID"/>
+            <column name="customer_name" label="Name"/>
+            <column name="email"/>
+            <column name="group_id" type="string" source="\Hyva\Admin\Model\Config\Source\Group"/>
+            <column name="billing_telephone" label="Phone"/>
+            <column name="billing_postcode" label="ZIP"/>
+            <column name="billing_country_id" label="Country" source="\Magento\Customer\Model\ResourceModel\Address\Attribute\Source\CountryWithWebsites"/>
+            <column name="billing_region" label="State/Province"/>
+            <column name="created_at" type="datetime" label="Customer Since"/>
+            <column name="website_id" label="Web Site" type="website_id" source="Magento\Store\Model\ResourceModel\Website\Collection"/>
+            <column name="created_in" label="Account Created in"/>
+            <column name="dob" type="date" label="Date of Birth"/>
+            <column name="taxvat" label="Tax VAT Number"/>
+            <column name="gender" label="Gender" source="\Hyva\Admin\Model\Config\Source\Gender"/>
+        </include>
+    </columns>
+    <actions idColumn="customer_id">
+        <action id="edit" label="Edit" url="customer/index/edit" idParam="id"/>
+    </actions>
+    <massActions idColumn="customer_id" idsParam="selected">
+        <action id="delete" label="Delete" url="customer/index/massDelete" requireConfirmation="true"/>
+        <action id="subscribe" label="Subscribe" url="customer/index/massSubscribe" requireConfirmation="true"/>
+        <action id="unsubscribe" label="Unsubscribe" url="customer/index/massUnsubscribe" requireConfirmation="true"/>
+    </massActions>
+    <entityConfig>
+        <label>
+            <singular>Customer</singular>
+            <plural>Customers</plural>
+        </label>
+    </entityConfig>
+    <navigation>
+        <exports>
+            <export type="csv" label="Export as CSV"/>
+            <export type="xlsx" label="Export as XLSX"/>
+        </exports>
+        <buttons>
+            <button id="new" label="Add New Customer" url="customer/index/new/"/>
+        </buttons>
+        <pager>
+            <defaultPageSize>20</defaultPageSize>
+            <pageSizes>20,30,50,100,200</pageSizes>
+        </pager>
+        <sorting>
+            <defaultSortByColumn>customer_id</defaultSortByColumn>
+            <defaultSortDirection>desc</defaultSortDirection>
+        </sorting>
+        <filters>
+            <filter column="customer_id"/>
+            <filter column="customer_name"/>
+            <filter column="email"/>
+            <filter column="group_id"/>
+            <filter column="billing_telephone"/>
+            <filter column="billing_postcode"/>
+            <filter column="billing_country_id"/>
+            <filter column="billing_region"/>
+            <filter column="created_at" filterType="\Hyva\Admin\Model\GridFilter\DateRangeFilter"/>
+            <filter column="website_id"/>
+            <filter column="created_in"/>
+            <filter column="dob" filterType="\Hyva\Admin\Model\GridFilter\DateRangeFilter"/>
+            <filter column="taxvat"/>
+            <filter column="gender"/>
+        </filters>
+    </navigation>
+</grid>

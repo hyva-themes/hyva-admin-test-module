@@ -5,6 +5,8 @@ A small module to visually test [Hyva_Admin](https://github.com/hyva-themes/mage
 A link to the test page can be found in the admin menu in
 *System > Tools > Hyva Test*.
 
+A fast access menu can be activate in system > configuration > hyva > Hyva Admin Grid 
+
 This module expects the Sample Data to be installed.
 
 ## Stability
@@ -14,6 +16,25 @@ The module is NOT considered production code. Anything can change at any time. I
 ## Contributions
 
 PR's are very welcome.
+
+Update with :
+https://github.com/opengento/magento2-hyva-admin (sales layout and di massaction Filter)
+
+https://github.com/jahvi/magento2-hyva-order-grid
+
+https://github.com/tweetyx/pagespeedfr_cmsacf grid and form in ajax in the same page
+
+https://github.com/juashyam/easy-admin-grids (i haven t add all and on his plugin it replace grid not add news)
+Customers (Admin → Customers)
+All Customers
+Customers Now Online
+Customer Segments
+Customer Groups
+Marketing (Admin → Marketing)
+Cart Price Rules
+Catalog Price Rule
+Gift Card Accounts
+Related Products Rules
 
 ### License
 

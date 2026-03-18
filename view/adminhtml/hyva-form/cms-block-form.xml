@@ -6,36 +6,40 @@
  * See COPYING.txt for license details.
  */
 -->
-<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-      xsi:noNamespaceSchemaLocation="urn:magento:module:Hyva_Admin:etc/hyva-form.xsd">
-<!--    <load method="\Magento\Cms\Model\ResourceModel\Block::load">-->
-<!--        <argumentBindings>-->
-<!--            &lt;!&ndash; public function load(AbstractModel $object, $value, $field = null) &ndash;&gt;-->
-<!--            <argument name="value" requestParam="id"/>-->
-<!--        </argumentBindings>-->
-<!--    </load>-->
-<!--    <load method="\Magento\Cms\Model\Block::load">-->
-<!--        <argumentBindings>-->
-<!--            <argument name="modelId" requestParam="id"/>-->
-<!--        </argumentBindings>-->
-<!--    </load>-->
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Hyva_Admin:etc/hyva-form.xsd">
     <load method="\Magento\Cms\Api\BlockRepositoryInterface::getById">
         <bindArguments>
             <argument name="blockId" requestParam="id"/>
         </bindArguments>
     </load>
+
+    <save method="\Magento\Cms\Api\BlockRepositoryInterface::save">
+        <bindArguments>
+            <argument name="block" formData="true"/>
+        </bindArguments>
+    </save>
     <sections>
-        <section id="general" label="General" sortOrder="10">
-            <group id="required" label="Required Fields" sortOrder="10"/>
-            <group id="optional" label="Optional Fields" sortOrder="20"/>
+        <section id="general" label="General" sortOrder="10" >
+            <group id="required" label="Required Fields" sortOrder="10" />
         </section>
     </sections>
-    <fields>
-        <include>
-<!--            <field name="identifier"/>-->
-            <field name="identifier" group="required"/>
-            <field name="content" group="optional"/>
-            <field name="active" group="optional"/>
-        </include>
+    <fields keepAllSourceFields="false">
+        <field name="id" group="required" class="hidden" />
+        <field name="is_active" group="required" type="select" source="\Magento\Config\Model\Config\Source\Yesno" />
+        <field name="title" group="required" />
+        <field name="identifier" group="required"/>
+        <field name="stores" group="required" type="multiselect" source="\Hyva\AdminTest\Model\Source\StoreWithAllViews" template="Hyva_AdminTest::store-multiselect.phtml" label="Store view"/>
+        <field name="content" group="required" type="wysiwyg" />
     </fields>
+    <navigation>
+        <buttons>
+            <button id="back" label="Back" url="hyva_admin_test/cms/block" enabled="true" />
+            <button id="reset" label="Reset" onclick="window.location.reload(true)"/>
+            <button id="save" label="Save Ajax" url="hyva_admin/form/save" enabled="true" useajax="true"/>
+            <button id="save_and_continue" label="Save" url="hyva_admin/form/save" enabled="true" useajax="false"/>
+            <!-- <button id="validate">
+                <event on="click"/>
+            </button> -->
+        </buttons>
+    </navigation>
 </form>

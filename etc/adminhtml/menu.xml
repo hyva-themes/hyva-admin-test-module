@@ -6,16 +6,21 @@
  * See COPYING.txt for license details.
  */
 -->
-<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
     <menu>
-        <add id="Hyva_AdminTest::test_grid" title="Hyvä Grid Test" translate="title" module="Hyva_AdminTest"
-             parent="Magento_Backend::system_tools"
-             sortOrder="30" dependsOnModule="Hyva_AdminTest" resource="Hyva_AdminTest::test"
-             action="hyva_admin_test/test/grid"/>
-        <add id="Hyva_AdminTest::test_form" title="Hyvä Form Test" translate="title" module="Hyva_AdminTest"
-             parent="Magento_Backend::system_tools"
-             sortOrder="31" dependsOnModule="Hyva_AdminTest" resource="Hyva_AdminTest::test"
-             action="hyva_admin_test/test/form"/>
+        <add id="Hyva_AdminTest::test_grid" title="Hyvä Grid Test" translate="title" module="Hyva_AdminTest" parent="Magento_Backend::system_tools" sortOrder="30" dependsOnModule="Hyva_AdminTest" resource="Hyva_AdminTest::test" action="hyva_admin_test/test/grid"/>
+        <add id="Hyva_AdminTest::test_form" title="Hyvä Form Test" translate="title" module="Hyva_AdminTest" parent="Magento_Backend::system_tools" sortOrder="31" dependsOnModule="Hyva_AdminTest" resource="Hyva_AdminTest::test" action="hyva_admin_test/test/form"/>
+
+        <add id="Hyva_AdminTest::sales_order" title="Hyva order" translate="title" module="Hyva_AdminTest" sortOrder="5" parent="Magento_Sales::sales_operation" dependsOnModule="Hyva_AdminTest" resource="Magento_Sales::sales_order" action="hyva_admin_test/sales/order"/>
+        <add id="Hyva_AdminTest::sales_shipment" title="Hyva shipment" translate="title" module="Hyva_AdminTest" sortOrder="5" parent="Magento_Sales::sales_operation" dependsOnModule="Hyva_AdminTest" resource="Magento_Sales::shipment" action="hyva_admin_test/sales/shipment"/>
+        <add id="Hyva_AdminTest::sales_invoice" title="Hyva invoice" translate="title" module="Hyva_AdminTest" sortOrder="5" parent="Magento_Sales::sales_operation" dependsOnModule="Hyva_AdminTest" resource="Magento_Sales::sales_invoice" action="hyva_admin_test/sales/invoice"/>
+        <add id="Hyva_AdminTest::sales_creditmemo" title="Hyva credit memo" translate="title" module="Hyva_AdminTest" sortOrder="5" parent="Magento_Sales::sales_operation" dependsOnModule="Hyva_AdminTest" resource="Magento_Sales::sales_creditmemo" action="hyva_admin_test/sales/creditmemo"/>
+
+        <add id="Hyva_AdminTest::cms_page" title="Hyva Page" translate="title" module="Hyva_AdminTest" sortOrder="5" parent="Magento_Backend::content_elements" dependsOnModule="Hyva_AdminTest" resource="Magento_Cms::page" action="hyva_admin_test/cms/page"/>
+        <add id="Hyva_AdminTest::cms_block" title="Hyva Block" translate="title" module="Hyva_AdminTest" sortOrder="5" parent="Magento_Backend::content_elements" dependsOnModule="Hyva_AdminTest" resource="Magento_Cms::block" action="hyva_admin_test/cms/block"/>
+
+        <add id="Hyva_AdminTest::catalog_product" title="Hyva Products" translate="title" module="Hyva_AdminTest" sortOrder="15" parent="Magento_Catalog::catalog" dependsOnModule="Hyva_AdminTest" resource="Magento_Catalog::products" action="hyva_admin_test/catalog/products"/>
+
+        <add id="Hyva_AdminTest::customer_index" title="Hyva All Customers" translate="title" module="Hyva_AdminTest" sortOrder="5" parent="Magento_Customer::customer" dependsOnModule="Hyva_AdminTest" resource="Magento_Customer::index" action="hyva_admin_test/customer/index"/>
     </menu>
 </config>

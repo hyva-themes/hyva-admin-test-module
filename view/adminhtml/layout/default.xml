@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="header">
+            <block class="Hyva\AdminTest\Block\Adminhtml\CacheButton" name="admin.cache.button" template="Hyva_AdminTest::hyva-fast-menu.phtml" after="-" ifconfig="hyva_theme_grid/grid/menu_fast" />
+        </referenceBlock>
+    </body>
+</page>
